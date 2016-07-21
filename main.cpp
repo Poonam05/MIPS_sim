@@ -14,7 +14,7 @@
 extern class Pipeline Pipeline_obj;
 extern class Report   Report_obj;
 
-int  main(int argc, const char * argv[])
+int main(int argc, const char * argv[])
 {
     uint8_t i;
 

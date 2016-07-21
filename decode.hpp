@@ -54,6 +54,7 @@
 #define RT_ADDRESS_POSITION_20_16   16
 #define RD_ADDRESS_POSITION_15_11   11
 #define SHAMT_POSITION_10_6          6
+#define IMM_POSITION                 0
 
 /* Opcodes */
 #define ADD_IMM_WITH_OVERFLOW       0x08
@@ -70,6 +71,7 @@
 #define OR_FUNC                     0x25
 #define XOR_FUNC                    0x26
 #define NOR_FUNC                    0x27
+#define SLTU_FUNC                   0x2B
 
 
 

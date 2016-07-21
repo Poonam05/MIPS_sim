@@ -60,6 +60,7 @@ uint8_t Decode::decode_instruction (uint32_t mips_instruction_binary,
             dest_register_addr = decode_opcode_0 (mips_instruction_binary, instruction, operand1, operand2, operand3);
                 
             break;
+        
             
     }
     //printf ("Opcode: 0x%x decoded instruction %d\n", opcode_26_31, *instruction);
@@ -180,7 +181,27 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d << %d\n", dest_register_addr, *operand2, *operand3);
             
             break;
-
+            
+        case SLTU_FUNC: //DOUBT!!!
+            *instruction = SLTU;
+            *operand1    = get_rd_value(mips_instruction_binary);
+            *operand2    = get_rt_value(mips_instruction_binary);
+            *operand3    = get_rs_value(mips_instruction_binary);
+            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d << %d\n", dest_register_addr, *operand2, *operand3);
+            
+            break;
+            
+       /* case SLL_FUNC:
+            *instruction = SLL;
+            *operand1    = get_rd_value(mips_instruction_binary);
+            *operand2    = get_rt_value(mips_instruction_binary);
+            *operand3    = get_shamt_value(mips_instruction_binary);
+            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d << %d\n", dest_register_addr, *operand2, *operand3);
+            
+            break;*/
+        
         
             
         default:
