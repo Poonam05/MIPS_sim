@@ -13,8 +13,8 @@
 #include <stdint.h>
 #include "instructions.hpp"
 
-#define ASM_FILE_PATH   "/Users/avdd80/Documents/Projects/MIPS_sim/MIPS_sim/mips_code.asm"
-#define MACHINE_CODE_PATH "/Users/avdd80/Documents/Projects/MIPS_sim/MIPS_sim/machine_code.txt"
+#define ASM_FILE_PATH     "/Users/poonam/Desktop/mips_code.asm"
+#define MACHINE_CODE_PATH "/Users/poonam/Desktop/machine_code.txt"
 
 typedef enum
 {
