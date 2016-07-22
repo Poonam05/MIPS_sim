@@ -77,11 +77,11 @@ uint32_t Memory::fetch_instruction (uint32_t pc_value)
 /*----------------------------------------------------------------*/
 /* FUNCTION: write_instruction_to_memory                          */
 /*----------------------------------------------------------------*/
-/* Description: Writes to a specific location in the memory (in data
+/* Description: Writes to a specific location in the memory (in text
  segment)
  
  Arguments: 1. Address in memory
- 2. Value to write to memory
+            2. Value to write to memory
  
  Returns:   None
  
