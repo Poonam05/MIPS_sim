@@ -163,7 +163,7 @@ void Pipeline::pipeline_memory_write (uint32_t address,
     printf ("MEM WRITE: Start\n");
     printf ("MEM WRITE: Write 0x%x @ 0x%x", value, address);
     
-    Memory_obj.write_to_memory(address, value);
+    Memory_obj.write_data_to_memory(address, value);
     printf ("MEM WRITE: End\n");
 
 } /* pipeline_memory_write */

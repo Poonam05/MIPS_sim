@@ -70,9 +70,10 @@ public:
     
     
     /*----------------------------------------------------------------*/
-    /* FUNCTION: write_to_memory                                      */
+    /* FUNCTION: write_data_to_memory                                 */
     /*----------------------------------------------------------------*/
-    /* Description: Writes to a specific location in the memory
+    /* Description: Writes data to a specific location in the memory (in
+                    data segment)
      
      Arguments: 1. Address in memory
                 2. Value to write to memory
@@ -80,7 +81,23 @@ public:
      Returns:   None
      
      ------------------------------------------------------------------*/
-    void write_to_memory (uint32_t address, uint32_t value);
+    void write_data_to_memory (uint32_t address, uint32_t value);
+
+    
+    /*----------------------------------------------------------------*/
+    /* FUNCTION: write_instruction_to_memory                          */
+    /*----------------------------------------------------------------*/
+    /* Description: Writes to a specific location in the memory (in text
+                    segment)
+     
+     Arguments: 1. Address in memory
+                2. Value to write to memory
+     
+     Returns:   None
+     
+     ------------------------------------------------------------------*/
+    void write_instruction_to_memory (uint32_t address, uint32_t value);
+
     
     /*----------------------------------------------------------------*/
     /* FUNCTION: CONSTRUCTOR                                          */

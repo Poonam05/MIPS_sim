@@ -75,9 +75,32 @@ uint32_t Memory::fetch_instruction (uint32_t pc_value)
 } /* fetch_instruction */
 
 /*----------------------------------------------------------------*/
-/* FUNCTION: write_to_memory                                      */
+/* FUNCTION: write_instruction_to_memory                          */
 /*----------------------------------------------------------------*/
-/* Description: Writes to a specific location in the memory
+/* Description: Writes to a specific location in the memory (in data
+ segment)
+ 
+ Arguments: 1. Address in memory
+ 2. Value to write to memory
+ 
+ Returns:   None
+ 
+ ------------------------------------------------------------------*/
+void Memory::write_instruction_to_memory (uint32_t address, uint32_t value)
+{
+    uint32_t* instruction_ptr;
+    
+    instruction_ptr = translate_pc_addr(address);
+    
+    *instruction_ptr = value;
+    
+} /* write_instruction_to_memory */
+
+/*----------------------------------------------------------------*/
+/* FUNCTION: write_data_to_memory                                 */
+/*----------------------------------------------------------------*/
+/* Description: Writes to a specific location in the memory (in data
+                segment)
  
  Arguments: 1. Address in memory
             2. Value to write to memory
@@ -85,7 +108,7 @@ uint32_t Memory::fetch_instruction (uint32_t pc_value)
  Returns:   None
  
  ------------------------------------------------------------------*/
-void Memory::write_to_memory (uint32_t address, uint32_t value)
+void Memory::write_data_to_memory (uint32_t address, uint32_t value)
 {
     uint32_t* data_ptr;
     
@@ -93,7 +116,7 @@ void Memory::write_to_memory (uint32_t address, uint32_t value)
     
     *data_ptr = value;
 
-} /* write_to_memory */
+} /* write_data_to_memory */
 
 /*----------------------------------------------------------------*/
 /* FUNCTION: CONSTRUCTOR                                          */
@@ -107,73 +130,6 @@ void Memory::write_to_memory (uint32_t address, uint32_t value)
  ------------------------------------------------------------------*/
 Memory::Memory (void)
 {
-    /* TODO: REMOVE LATER Initialization to simulate an ADD instruction */
-    /* ADD reg0, reg1, reg2 */
-    instruction_memory[0] = 0x00 << 26;
-    /* rs */
-    instruction_memory[0] |= 0x01 << 21; // x= x or a
-    /* rt */
-    instruction_memory[0] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[0] |= 0x00 << 11;
-    /* func code */
-    instruction_memory[0] |= 0x20;
-    
-    
-    
-    /* AND reg7, reg2, reg1 */
-    instruction_memory[1] = 0x00 << 26;
-    /* rs */
-    instruction_memory[1] |= 0x01 << 21;
-    /* rt */
-    instruction_memory[1] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[1] |= 0x07 << 11;
-    /* func code */
-    instruction_memory[1] |= 0x24;
 
-    /* OR reg14, reg2, reg1 */
-    instruction_memory[2] = 0x00 << 26;
-    /* rs */
-    instruction_memory[2] |= 0x01 << 21;
-    /* rt */
-    instruction_memory[2] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[2] |= 0x0E << 11;
-    /* func code */
-    instruction_memory[2] |= 0x25;
-    
-    /* SRL reg14, reg2, reg1 */
-    instruction_memory[3] = 0x00 << 26;
-    /* rs */
-    instruction_memory[3] |= 0x01 << 21;
-    /* rt */
-    instruction_memory[3] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[3] |= 0x0E << 6;
-    /* func code */
-    instruction_memory[3] |= 0x02;
-    
-    /* XOR reg14, reg2, reg1 */
-    instruction_memory[4] = 0x00 << 26;
-    /* rs */
-    instruction_memory[4] |= 0x01 << 21;
-    /* rt */
-    instruction_memory[4] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[4] |= 0x0E << 11;
-    /* func code */
-    instruction_memory[4] |= 0x26;
-    
-    /* NOR reg0, reg1, reg2 */
-    instruction_memory[5] = 0x00 << 26;
-    /* rs */
-    instruction_memory[5] |= 0x01 << 21;
-    /* rt */
-    instruction_memory[5] |= 0x02 << 16;
-    /* rd */
-    instruction_memory[5] |= 0x00 << 11;
-    /* func code */
-    instruction_memory[5] |= 0x27;
 
 } /* Memory Constructor */

@@ -10,14 +10,18 @@
 #include "main.hpp"
 #include "pipeline.hpp"
 #include "report.hpp"
+#include "assembler.hpp"
 
 extern class Pipeline Pipeline_obj;
 extern class Report   Report_obj;
+extern class Assembler Assembler_obj;
 
 int  main(int argc, const char * argv[])
 {
     uint8_t i;
 
+    Assembler_obj.load_text_section();
+    
     Report_obj.write_header_to_report();
     for (i  = 0; i < 20; i++)
     {

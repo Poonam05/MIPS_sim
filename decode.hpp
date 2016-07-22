@@ -67,6 +67,13 @@
 #define ADD_FUNC                    0x20
 #define ADDU_FUNC                   0x21
 #define AND_FUNC                    0x24
+#define SUB_FUNC                    0x22
+#define SUBU_FUNC                   0x23
+#define SLLV_FUNC                   0x04
+#define SRLV_FUNC                   0x06
+#define SRAV_FUNC                   0x07
+#define SLT_FUNC                    0x2A
+#define SLTU_FUNC                   0x2B
 // Added
 #define OR_FUNC                     0x25
 #define XOR_FUNC                    0x26
