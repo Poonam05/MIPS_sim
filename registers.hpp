@@ -122,7 +122,7 @@ public:
        Returns:   Program Counter value before increment
  
     ------------------------------------------------------------------*/
-    void get_PC_val(void);
+    void get_PC_val(uint32_t target);
 
     
     

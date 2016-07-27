@@ -170,11 +170,10 @@ uint32_t Register_file::read_from_reg (uint8_t reg_addr)
  Returns:   Program Counter value before increment
  
  ------------------------------------------------------------------*/
-void Register_file::get_PC_val(void)
+void Register_file::get_PC_val(uint32_t target)
 {
-    uint32_t pc_val;
-    pc_val = pc++;
-    
+    pc= (target & 0x0FFF) >> 2;
+    pc= (pc & 0xF000)+pc;
     
 }
 

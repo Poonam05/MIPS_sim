@@ -61,10 +61,10 @@ uint8_t Decode::decode_instruction (uint32_t mips_instruction_binary,
                 
             break;
             
-        //case 2:
-          //  dest_register_addr = decode_opcode_2 (mips_instruction_binary, instruction, operand1);
+        case 2:
+            dest_register_addr = decode_opcode_2 (mips_instruction_binary, instruction, operand1);
                 
-            //break;
+            break;
         
             
     }
@@ -256,18 +256,12 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
      ------------------------------------------------------------------*/
     
 
- /*   uint8_t decode_opcode_2 (uint32_t mips_instruction_binary,
+   uint8_t decode_opcode_2 (uint32_t mips_instruction_binary,
                              instruction_t* instruction,
                              uint32_t* operand1)
 {
-    uint32_t target,pc;
-    
-    target = mips_instruction_binary >> 2;
-    pc= pc_val;
-    target = target + (pc & 0xF000);
-    
-    
-}*/
+     get_PC_val(operand1);
+}
 
 
 
