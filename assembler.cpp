@@ -2,7 +2,7 @@
 //  assembler.cpp
 //  MIPS_sim
 //
-//  Created by Abhijeet Deshpande on 7/21/16.
+//  Created by Poonam Deshpande on 7/21/16.
 //  Copyright © 2016 Poonam Deshpande. All rights reserved.
 //
 
