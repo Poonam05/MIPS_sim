@@ -154,7 +154,9 @@ uint32_t Pipeline::pipeline_execute_instruction (instruction_t instruction,
  
  
  ------------------------------------------------------------------*/
-                                      /* Address to write at */
+//Not handled by pipeline!!
+
+/* Address to write at */
 void Pipeline::pipeline_memory_write (uint32_t address,
                                 
                                       /* Value to write */
@@ -181,7 +183,10 @@ void Pipeline::pipeline_memory_write (uint32_t address,
  
  
  ------------------------------------------------------------------*/
-                                   /* Register to write to */
+
+//Not handled by pipeline!!
+
+/* Register to write to */
 void Pipeline::pipeline_writeback (uint8_t reg_addr,
                                           
                                    /* Value to write */

@@ -64,7 +64,7 @@ void Assembler::load_text_section(void)
     while (1)
     {
         /* Read instruction from asm file */
-        fscanf (asm_fp, "%s %s %s %s\n", instruction_mneumonic, arg1, arg2, arg3);
+        fscanf (asm_fp,"%s %s %s %s\n", instruction_mneumonic, arg1, arg2, arg3);
 
         switch (identify_instruction(instruction_mneumonic))
         {
@@ -128,6 +128,7 @@ void Assembler::load_text_section(void)
             case BLEZ:
             case BGTZ:
                 break;
+                
                 
             case LUI:
                 break;
@@ -317,6 +318,11 @@ instruction_t Assembler::identify_instruction(char* instruction_mneumonic)
     {
         identified_instruction = SW;
         opcode = 0x2B;
+    }
+    else if (strcmp(instruction_mneumonic, "J"))
+    {
+        identified_instruction = J;
+        opcode = 0x02;
     }
 
 

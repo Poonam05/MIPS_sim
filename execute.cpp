@@ -81,6 +81,28 @@ uint32_t Execute::execute_instruction (instruction_t instruction,
             
             break;
             
+            
+            
+    /*=============================================================================*/
+    /* ADD Unsigned                                                 ADDU, rd, rs, rt
+     
+       Add contents of registers rs and rt and place 32-bit result in register rd.
+     
+       Do not trap on overflow.
+    */
+    /*=============================================================================*/
+            
+            case ADDU:
+            intermediate_result = operand2 + operand3;
+            
+            // No memory access required
+            *is_mem_write_valid = 0 ;
+            
+            //Writeback to register. Hence it is valid
+            *is_writeback_valid = 1 ;
+            
+            break;
+            
     
     
             /*=============================================================*/
@@ -159,6 +181,30 @@ uint32_t Execute::execute_instruction (instruction_t instruction,
             
             break;
             
+            
+ 
+    /*=============================================================================*/
+    /* Shift Right Arithmetic                                      SRA rd, rt, shamt
+
+       Shift contents of register rt right by shamt bits, sign-extending the high
+       order bits. Place 32-bit result in register rd.
+    */
+    /*=============================================================================*/
+            
+         /*
+            case SRA:
+            intermediate_result = operand2 >> operand3;
+            
+            // No memory access required
+            *is_mem_write_valid = 0 ;
+            
+            //Writeback to register. Hence it is valid
+            *is_writeback_valid = 1 ;
+            
+            break; */
+    
+            
+            
     /*=============================================================================*/
     /* NOR                                                            NOR rd, rs, rt
 
@@ -169,7 +215,7 @@ uint32_t Execute::execute_instruction (instruction_t instruction,
             
             
         case NOR:
-            intermediate_result = !(operand2 | operand3);
+            intermediate_result = ~ (operand2 | operand3);
             
             
             // No memory access required
@@ -201,6 +247,35 @@ uint32_t Execute::execute_instruction (instruction_t instruction,
             *is_writeback_valid = 1 ;
             
             break;
+            
+            
+            
+     /*=============================================================================*/
+    /* Set on Less Than Unsigned                                     SLTU rd, rs, rt
+
+       Compare contents of registers rt to rs (as unsigned 32-bit integers).
+       If register rs is less than rt, result = 1; otherwise result = 0.
+    */
+    /*=============================================================================*/
+
+            
+            
+            case SLTU:
+            if(operand2 < operand3)
+            {
+                intermediate_result = 1;
+            }
+            intermediate_result = 0;
+            
+            // No memory access required
+            *is_mem_write_valid = 0 ;
+            
+            //Writeback to register. Hence it is valid
+            *is_writeback_valid = 1 ;
+            
+            break;
+
+        
             
             
             

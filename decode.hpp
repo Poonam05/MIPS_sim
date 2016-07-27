@@ -56,14 +56,23 @@
 #define SHAMT_POSITION_10_6          6
 #define IMM_POSITION                 0
 
+
+
 /* Opcodes */
 #define ADD_IMM_WITH_OVERFLOW       0x08
 #define ADD_IMM_WITHOUT_OVERFLOW    0x09
 #define AND_IMM                     0x0C
 
 /* Function codes */
-#define SLL_FUNC                    0x00 // Added
-#define SRL_FUNC                    0x02 // Added 
+#define SLL_FUNC                    0x00
+#define SRL_FUNC                    0x02
+#define SRA_FUNC                    0x03
+#define SLLV_FUNC                   0x04
+#define SRAV_FUNC                   0x07
+#define MFHI_FUNC                   0x10
+#define MTHI_FUNC                   0x11
+#define MFLO_FUNC                   0x12
+#define MTLO_FUNC                   0x13
 #define ADD_FUNC                    0x20
 #define ADDU_FUNC                   0x21
 #define AND_FUNC                    0x24
@@ -74,7 +83,6 @@
 #define SRAV_FUNC                   0x07
 #define SLT_FUNC                    0x2A
 #define SLTU_FUNC                   0x2B
-// Added
 #define OR_FUNC                     0x25
 #define XOR_FUNC                    0x26
 #define NOR_FUNC                    0x27
@@ -200,6 +208,29 @@ private:
                              uint32_t* operand1,
                              uint32_t* operand2,
                              uint32_t* operand3);
+    
+    
+    /*----------------------------------------------------------------*/
+    /* FUNCTION: decode_opcode_2 (static)                             */
+    /*----------------------------------------------------------------*/
+    /* Description: Decodes the function code and returns
+                    instruction type for opcode = 2
+                    along with the offset
+     
+     Arguments: 1. MIPS instruction binary
+     (Return)   2. Pointer to decoded instruction
+     (Return)   3. Target to jump to 
+   
+     
+     
+     Returns:   Destination register address
+     
+     ------------------------------------------------------------------*/
+    
+
+    uint8_t decode_opcode_2 (uint32_t mips_instruction_binary,
+                             instruction_t* instruction,
+                             uint32_t* operand1);
 
 public:
     

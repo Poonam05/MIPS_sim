@@ -60,6 +60,11 @@ uint8_t Decode::decode_instruction (uint32_t mips_instruction_binary,
             dest_register_addr = decode_opcode_0 (mips_instruction_binary, instruction, operand1, operand2, operand3);
                 
             break;
+            
+        //case 2:
+          //  dest_register_addr = decode_opcode_2 (mips_instruction_binary, instruction, operand1);
+                
+            //break;
         
             
     }
@@ -103,7 +108,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
     {
         case ADD_FUNC:
             *instruction = ADD;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -113,7 +117,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
 
         case ADDU_FUNC:
             *instruction = ADDU;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -123,7 +126,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
         case AND_FUNC:
             *instruction = AND;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -134,7 +136,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
         case OR_FUNC:
             *instruction = OR;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -144,7 +145,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
         case XOR_FUNC:
             *instruction = XOR;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -154,7 +154,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
         
         case NOR_FUNC:
             *instruction = NOR;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rs_value(mips_instruction_binary);
             *operand3    = get_rt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -164,7 +163,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
         case SRL_FUNC:
             *instruction = SRL;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rt_value(mips_instruction_binary);
             *operand3    = get_shamt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -174,7 +172,6 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
         case SLL_FUNC:
             *instruction = SLL;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rt_value(mips_instruction_binary);
             *operand3    = get_shamt_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
@@ -182,25 +179,51 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             
             break;
             
-        case SLTU_FUNC: //DOUBT!!!
+        case SRA_FUNC:
+            *instruction = SRA;
+            *operand2    = get_rt_value(mips_instruction_binary);
+            *operand3    = get_shamt_value(mips_instruction_binary);
+            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d >> %d\n", dest_register_addr, *operand2, *operand3);
+            
+            break;
+            
+            
+        case SLTU_FUNC:
             *instruction = SLTU;
-            *operand1    = get_rd_value(mips_instruction_binary);
             *operand2    = get_rt_value(mips_instruction_binary);
             *operand3    = get_rs_value(mips_instruction_binary);
             dest_register_addr = get_dest_register_addr (mips_instruction_binary);
-            printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d << %d\n", dest_register_addr, *operand2, *operand3);
+            printf ("DECODE:decode_opcode_0:Function STLU rd(%d) <- %d STLU %d\n", dest_register_addr, *operand2, *operand3);
             
             break;
             
-       /* case SLL_FUNC:
-            *instruction = SLL;
-            *operand1    = get_rd_value(mips_instruction_binary);
-            *operand2    = get_rt_value(mips_instruction_binary);
-            *operand3    = get_shamt_value(mips_instruction_binary);
-            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
-            printf ("DECODE:decode_opcode_0:Function SLL rd(%d) <- %d << %d\n", dest_register_addr, *operand2, *operand3);
             
-            break;*/
+            
+        case SLLV_FUNC:
+            *instruction = SLLV;
+            *operand2    = get_rt_value(mips_instruction_binary);
+            *operand3    = get_rs_value(mips_instruction_binary);
+            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function SLLV rd(%d) <- %d SLLV %d\n", dest_register_addr, *operand2, *operand3);
+            
+            break;
+            
+            
+        case SRAV_FUNC:
+            *instruction = SRAV;
+            *operand2    = get_rt_value(mips_instruction_binary);
+            *operand3    = get_rs_value(mips_instruction_binary);
+            dest_register_addr = get_dest_register_addr (mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function SRAV rd(%d) <- %d SRAV %d\n", dest_register_addr, *operand2, *operand3);
+            
+            break;
+            
+            
+         
+        
+        
+       
         
         
             
@@ -212,6 +235,47 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
     
     return dest_register_addr;
 } /* decode_opcode_0 */
+
+
+
+/*----------------------------------------------------------------*/
+    /* FUNCTION: decode_opcode_2 (static)                             */
+    /*----------------------------------------------------------------*/
+    /* Description: Decodes the function code and returns
+                    instruction type for opcode = 2
+                    along with the offset
+     
+     Arguments: 1. MIPS instruction binary
+     (Return)   2. Pointer to decoded instruction
+     (Return)   3. Target to jump to 
+   
+     
+     
+     Returns:   Destination register address
+     
+     ------------------------------------------------------------------*/
+    
+
+ /*   uint8_t decode_opcode_2 (uint32_t mips_instruction_binary,
+                             instruction_t* instruction,
+                             uint32_t* operand1)
+{
+    uint32_t target,pc;
+    
+    target = mips_instruction_binary >> 2;
+    pc= pc_val;
+    target = target + (pc & 0xF000);
+    
+    
+}*/
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------------------*/
 /* FUNCTION: get_dest_register_addr                               */
@@ -302,8 +366,7 @@ uint32_t Decode::get_rt_value (uint32_t mips_instruction_binary)
 /*----------------------------------------------------------------*/
 /* FUNCTION: get_shamt_value                                      */
 /*----------------------------------------------------------------*/
-/* Description: Extract source register address rt from MIPS
- instruction binary and return value at that register
+/* Description: Gets the SHift AMounT value.
  
  Arguments: 1. MIPS instruction binary
  

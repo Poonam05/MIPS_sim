@@ -470,7 +470,7 @@ typedef enum
     /* Jump                                                                 J target
      
        Shift 26-bit target address left two bits, combine with high order 4 bits of
-       PC and jump to address with a one instruction delay.
+       PC and jump to address with a one instruction delay.  
     */
     /*=============================================================================*/
     J = 43,

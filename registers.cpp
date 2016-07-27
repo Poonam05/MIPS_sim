@@ -158,3 +158,24 @@ uint32_t Register_file::read_from_reg (uint8_t reg_addr)
     }
     
 } /* read_from_reg */
+
+/*----------------------------------------------------------------*/
+/* FUNCTION: get_PC_val                                           */
+/*----------------------------------------------------------------*/
+/* Description: Returns program counter value and then increments 
+                it
+ 
+ Arguments: None
+ 
+ Returns:   Program Counter value before increment
+ 
+ ------------------------------------------------------------------*/
+void Register_file::get_PC_val(void)
+{
+    uint32_t pc_val;
+    pc_val = pc++;
+    
+    
+}
+
+
