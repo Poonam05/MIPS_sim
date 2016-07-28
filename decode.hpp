@@ -228,7 +228,7 @@ private:
      ------------------------------------------------------------------*/
     
 
-    uint8_t decode_opcode_2 (uint32_t mips_instruction_binary,
+    void decode_opcode_2 (uint32_t mips_instruction_binary,
                              instruction_t* instruction,
                              uint32_t* operand1);
 
