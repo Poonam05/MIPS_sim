@@ -12,17 +12,17 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#define MAX_INSTRUCTION_MEMORY_SIZE  512
-#define MAX_DATA_MEMORY_SIZE         512
-#define MAX_EXCEPTION_MEMORY_SIZE    512
+#define MAX_INSTRUCTION_MEMORY_SIZE  2048
+#define MAX_DATA_MEMORY_SIZE         2048
+#define MAX_EXCEPTION_MEMORY_SIZE    2048
 
 class Memory
 {
 private:
     
-    uint32_t instruction_memory[MAX_INSTRUCTION_MEMORY_SIZE];
-    uint32_t data_memory[MAX_DATA_MEMORY_SIZE];
-    uint32_t exception_memory[MAX_EXCEPTION_MEMORY_SIZE];
+    uint8_t instruction_memory[MAX_INSTRUCTION_MEMORY_SIZE];
+    uint8_t data_memory[MAX_DATA_MEMORY_SIZE];
+    uint8_t exception_memory[MAX_EXCEPTION_MEMORY_SIZE];
 
     
     /*----------------------------------------------------------------*/
