@@ -7,6 +7,7 @@
 //
 
 #include "registers.hpp"
+#include "decode.hpp"
 #include "report.hpp"
 #include <stdio.h>
 
@@ -170,11 +171,12 @@ uint32_t Register_file::read_from_reg (uint8_t reg_addr)
  Returns:   Program Counter value before increment
  
  ------------------------------------------------------------------*/
-void Register_file::get_PC_val(uint32_t target)
+void Register_file::set_PC_target(uint32_t target)
 {
-    pc= (target & 0x0FFF) >> 2;
-    pc= (pc & 0xF000)+pc;
+    target = target << 2;
+    pc=target + (pc & 0xF000);
     
 }
+//used in J 
 
 
