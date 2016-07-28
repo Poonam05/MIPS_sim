@@ -137,7 +137,12 @@ void Report::write_executed_instruction_string (instruction_t instruction_num)
         case SLL:
             fprintf (report_fp, "red\">SLL, Computed result = %d", Pipeline_obj.pipe_execute_ptr->computed_result);
             break;
+
+        case J:
             
+            fprintf (report_fp, "red\">SLL, Computed result = %d", Pipeline_obj.pipe_execute_ptr->computed_result);
+            break;
+
             
         case MAX_INSTRUCTION_T:
             fprintf (report_fp, "black\">MAX_INSTRUCTION");
