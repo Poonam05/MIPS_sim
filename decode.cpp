@@ -256,7 +256,7 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
      ------------------------------------------------------------------*/
     
 
-uint8_t Decode::decode_opcode_2 (uint32_t mips_instruction_binary, instruction_t* instruction, uint8_t* operand1)
+uint8_t Decode::decode_opcode_2 (uint32_t mips_instruction_binary, instruction_t* instruction, uint32_t* operand1)
 {
    // set_PC_target(operand1);
 }
