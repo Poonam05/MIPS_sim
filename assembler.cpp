@@ -386,9 +386,7 @@ uint32_t Assembler::pack_mips_binary (instruction_type_t instruction_type)
             mips_instruction_binary |= immediate;
             break;
         case JUMP_TYPE:
-            mips_instruction_binary |= (rs << 21);
-            mips_instruction_binary |= (rt << 16);
-            mips_instruction_binary |= immediate;
+            mips_instruction_binary |= target;
             break;
         case MAX_INSTRUCTION_TYPE:
         default:
