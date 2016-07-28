@@ -112,7 +112,7 @@ public:
     
     
     /*----------------------------------------------------------------*/
-    /* FUNCTION: get_PC_val                                           */
+    /* FUNCTION: set_PC_target                                        */
     /*----------------------------------------------------------------*/
     /* Description: Returns program counter value and then increments
             it
@@ -122,7 +122,8 @@ public:
        Returns:   Program Counter value before increment
  
     ------------------------------------------------------------------*/
-    void get_PC_val(uint32_t target);
+    void set_PC_target(uint32_t target);
+    
 
     
     
