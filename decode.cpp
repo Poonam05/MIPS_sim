@@ -61,10 +61,10 @@ uint8_t Decode::decode_instruction (uint32_t mips_instruction_binary,
                 
             break;
             
-        /*case 2:
+        case 2:
             dest_register_addr = decode_opcode_2 (mips_instruction_binary, instruction, operand1);
                 
-            break;*/
+            break;
         
             
     }
@@ -256,6 +256,10 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
      ------------------------------------------------------------------*/
     
 
+uint8_t Decode::decode_opcode_2 (uint32_t mips_instruction_binary, instruction_t* instruction, uint8_t* operand1)
+{
+   // set_PC_target(operand1);
+}
 
 
 
