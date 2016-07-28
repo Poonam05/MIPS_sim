@@ -115,7 +115,7 @@ void Assembler::load_text_section(void)
             case SH:
             case SW:
                 instruction_type = IMMEDIATE_TYPE;
-                rt        = atoi(arg1);
+                rt        = atoi (arg1);
                 immediate = atoi (arg2);
                 rs        = atoi (arg3);
                 break;
@@ -132,8 +132,13 @@ void Assembler::load_text_section(void)
                 
             case LUI:
                 break;
+            case J:
+            case JAL:
+                instruction_type = JUMP_TYPE;
+                target        = atoi(arg1);
+                break;
             default:
-                printf ("Invalid instruction in asm file %s", instruction_mneumonic);
+                printf ("Invalid instruction in asm file %s\n", instruction_mneumonic);
                 exit (1);
         }
         mips_instruction_binary = pack_mips_binary (instruction_type);
@@ -319,12 +324,23 @@ instruction_t Assembler::identify_instruction(char* instruction_mneumonic)
         identified_instruction = SW;
         opcode = 0x2B;
     }
-    else if (strcmp(instruction_mneumonic, "J"))
+    else if (!strcmp(instruction_mneumonic, "J"))
     {
         identified_instruction = J;
         opcode = 0x02;
     }
+    else if (!strcmp(instruction_mneumonic, "JAL"))
+    {
+        identified_instruction = JAL;
+        opcode = 0x03;
+    }
+    else
+    {
+        printf ("Instruction string not found\n");
+        exit (1);
+    }
 
+    printf ("[%s] Identified instruction = %d\n", instruction_mneumonic, identified_instruction);
 
     return identified_instruction;
 }
@@ -365,6 +381,11 @@ uint32_t Assembler::pack_mips_binary (instruction_type_t instruction_type)
             mips_instruction_binary |= (shamt << 6);
             break;
         case IMMEDIATE_TYPE:
+            mips_instruction_binary |= (rs << 21);
+            mips_instruction_binary |= (rt << 16);
+            mips_instruction_binary |= immediate;
+            break;
+        case JUMP_TYPE:
             mips_instruction_binary |= (rs << 21);
             mips_instruction_binary |= (rt << 16);
             mips_instruction_binary |= immediate;

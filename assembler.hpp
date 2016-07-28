@@ -21,6 +21,7 @@ typedef enum
     REGISTER_TYPE  = 0,
     SHIFT_TYPE     = 1,
     IMMEDIATE_TYPE = 2,
+    JUMP_TYPE      = 3,
     MAX_INSTRUCTION_TYPE
 } instruction_type_t;
 
@@ -31,7 +32,8 @@ private:
     uint32_t opcode;
     uint32_t alu_function;
     uint32_t rd, rs, rt;
-    uint32_t immediate;
+    int32_t  immediate;
+    int32_t  target;
     uint32_t shamt;
     
     /*----------------------------------------------------------------*/
