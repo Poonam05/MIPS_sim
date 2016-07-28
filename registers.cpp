@@ -173,9 +173,8 @@ uint32_t Register_file::read_from_reg (uint8_t reg_addr)
  ------------------------------------------------------------------*/
 void Register_file::set_PC_target(uint32_t target)
 {
-    target = target << 2;
-    pc=target + (pc & 0xF0000000);
-    
+    pc=pc-8;
+    pc=(target << 2) + (pc & 0x0FFFFFFF);
 }
 //used in J 
 
