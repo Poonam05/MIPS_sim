@@ -259,7 +259,9 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
 
 void Decode::decode_opcode_2 (uint32_t mips_instruction_binary, instruction_t* instruction, uint32_t* operand1)
 {
-   Register_file_obj.set_PC_target(*operand1);
+    *instruction =J;
+    *operand1    =  get_target(mips_instruction_binary);
+    Register_file_obj.set_PC_target(*operand1);
 }
 
 
@@ -392,6 +394,29 @@ uint16_t Decode::get_imm (uint32_t mips_instruction_binary)
     /* Get bits 15:0 */
     return ((mips_instruction_binary) & 0xFFFF);
 } /* get_imm */
+
+
+
+/*----------------------------------------------------------------*/
+/* FUNCTION: get_imm                                              */
+/*----------------------------------------------------------------*/
+/* Description: Extract immediate operand from MIPS 
+                instruction binary
+                                                  
+   Arguments: 1. MIPS instruction binary
+                                                  
+                                                  
+   Returns:   Immediate operand
+
+------------------------------------------------------------------*/
+uint16_t Decode::get_target (uint32_t mips_instruction_binary)
+{
+    /* Get bits 15:0 */
+    return ((mips_instruction_binary) & 0x03FFFFFF);
+} /* get_target */
+
+
+
 
 /*----------------------------------------------------------------*/
 /* FUNCTION: CONSTRUCTOR                                          */
