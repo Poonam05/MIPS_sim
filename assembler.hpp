@@ -14,7 +14,7 @@
 #include "instructions.hpp"
 
 #define ASM_FILE_PATH     "/Users/poonam/Desktop/mips_code.asm"
-#define MACHINE_CODE_PATH "/Users/pooonam/Desktop/machine_code.txt"
+#define MACHINE_CODE_PATH "/Users/poonam/Desktop/machine_code.txt"
 
 typedef enum
 {
