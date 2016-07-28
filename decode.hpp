@@ -186,6 +186,28 @@ private:
      uint16_t get_imm (uint32_t mips_instruction_binary);
     
     
+    
+    
+    
+    
+    /*----------------------------------------------------------------*/
+    /* FUNCTION: get_target                                           */
+    /*----------------------------------------------------------------*/
+    /* Description: Extract immediate operand from MIPS
+     instruction binary
+     
+     Arguments: 1. MIPS instruction binary
+     
+     
+     Returns:   Immediate operand
+     
+     ------------------------------------------------------------------*/
+     uint16_t get_target (uint32_t mips_instruction_binary);
+    
+
+    
+    
+    
     /*----------------------------------------------------------------*/
     /* FUNCTION: decode_opcode_0 (static)                             */
     /*----------------------------------------------------------------*/
