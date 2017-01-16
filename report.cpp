@@ -86,6 +86,12 @@ void Report::write_decoded_instruction_string (instruction_t instruction_num)
                      Pipeline_obj.pipe_decode_ptr->operand3);
             break;
             
+            case J:
+            fprintf (report_fp, "red\">SLL r(%d)",
+                     Pipeline_obj.pipe_decode_ptr->operand1);
+            break;
+
+            
             
         case MAX_INSTRUCTION_T:
             fprintf (report_fp, "black\">MAX_INSTRUCTION");
@@ -140,8 +146,10 @@ void Report::write_executed_instruction_string (instruction_t instruction_num)
 
         case J:
             
-            fprintf (report_fp, "red\">SLL, Computed result = %d", Pipeline_obj.pipe_execute_ptr->computed_result);
+            fprintf (report_fp, "red\">Jump" );
             break;
+        case NOP:
+            fprintf(report_fp, "red\">NOP");
 
             
         case MAX_INSTRUCTION_T:

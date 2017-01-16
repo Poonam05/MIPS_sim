@@ -98,7 +98,7 @@ void Register_file::set_PC (uint32_t new_pc_value)
 uint32_t Register_file::get_PC_and_increment (void)
 {
     uint32_t ret_val = pc;
-    pc++;
+    pc=pc+4;
     
     return ret_val;
 
@@ -119,14 +119,14 @@ uint32_t Register_file::get_PC_and_increment (void)
 ------------------------------------------------------------------*/
 void Register_file::write_to_reg (uint8_t reg_addr, uint32_t value)
 {
-    if (reg_addr < 31)
+    if (reg_addr < 32)
     {
         reg[reg_addr] = value;
         Report_obj.set_modified_reg_cycle(reg_addr);
     }
     else
     {
-        printf ("reg[%d]: Invalid register access", reg_addr);
+        printf ("WR to reg[%d]: Invalid register access", reg_addr);
         exit (1);
     }
     
@@ -148,13 +148,13 @@ void Register_file::write_to_reg (uint8_t reg_addr, uint32_t value)
 ------------------------------------------------------------------*/
 uint32_t Register_file::read_from_reg (uint8_t reg_addr)
 {
-    if (reg_addr < 31)
+    if (reg_addr < 32)
     {
         return reg[reg_addr];
     }
     else
     {
-        printf ("reg[%d]: Invalid register access", reg_addr);
+        printf ("RD from reg[%d]: Invalid register access", reg_addr);
         exit (1);
     }
     
@@ -173,9 +173,35 @@ uint32_t Register_file::read_from_reg (uint8_t reg_addr)
  ------------------------------------------------------------------*/
 void Register_file::set_PC_target(uint32_t target)
 {
-    pc=pc-8;
-    pc=(target << 2) + (pc & 0x0FFFFFFF);
+    
+    pc=(target << 2) + (pc & 0xF0000000);
+    
 }
-//used in J 
+//used in J
+
+/*----------------------------------------------------------------*/
+/* FUNCTION: set_mul_reg                                        */
+/*----------------------------------------------------------------*/
+/* Description: Returns program counter value and then increments
+ it
+ 
+ Arguments: None
+ 
+ Returns:   Program Counter value before increment
+ 
+ ------------------------------------------------------------------*/
+void Register_file::set_mul_reg(bool is_hi, uint32_t value)
+{
+    if(is_hi)
+    {
+        mul_hi= value;
+    }
+    else
+    {
+        mul_low= value;
+    }
+    
+};
+
 
 

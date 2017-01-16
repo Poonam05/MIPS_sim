@@ -87,7 +87,8 @@
 #define XOR_FUNC                    0x26
 #define NOR_FUNC                    0x27
 #define SLTU_FUNC                   0x2B
-
+// For Immediate Type
+#define LW_FUNC                     0x23
 
 
 
@@ -253,6 +254,25 @@ private:
     void decode_opcode_2 (uint32_t mips_instruction_binary,
                              instruction_t* instruction,
                              uint32_t* operand1);
+    
+    
+    
+    
+    
+    void imm_type (uint32_t mips_instruction_binary,
+                             instruction_t* instruction,
+                             uint32_t* operand1,
+                             uint32_t* operand2,
+                             uint32_t* operand3);
+
+    
+    
+    
+    
+    
+    
+    
+    
 
 public:
     

@@ -144,7 +144,7 @@ void Assembler::load_text_section(void)
         mips_instruction_binary = pack_mips_binary (instruction_type);
         Memory_obj.write_instruction_to_memory(instruction_count, mips_instruction_binary);
         fprintf (machine_code_fp, "0x%8X\n", mips_instruction_binary);
-        instruction_count++;
+        instruction_count+=4;
 
         /* Break out of while loop at EOF */
         if (feof(asm_fp))

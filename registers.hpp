@@ -123,6 +123,19 @@ public:
  
     ------------------------------------------------------------------*/
     void set_PC_target(uint32_t target);
+
+    /*----------------------------------------------------------------*/
+    /* FUNCTION: set_mul_reg                                        */
+    /*----------------------------------------------------------------*/
+    /* Description: Returns program counter value and then increments
+            it
+ 
+       Arguments: None
+ 
+       Returns:   Program Counter value before increment
+ 
+    ------------------------------------------------------------------*/
+    void set_mul_reg(bool is_hi, uint32_t );
     
 
     

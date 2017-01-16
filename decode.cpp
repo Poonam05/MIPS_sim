@@ -65,6 +65,9 @@ uint8_t Decode::decode_instruction (uint32_t mips_instruction_binary,
            decode_opcode_2 (mips_instruction_binary, instruction, operand1);
                 
             break;
+            
+        default:
+            imm_type(mips_instruction_binary, instruction, operand1,operand2,operand3);
         
             
     }
@@ -218,15 +221,16 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
             printf ("DECODE:decode_opcode_0:Function SRAV rd(%d) <- %d SRAV %d\n", dest_register_addr, *operand2, *operand3);
             
             break;
+
+        case MTHI_FUNC:
+            *instruction = MTHI;
+            *operand1    = get_rs_value(mips_instruction_binary);
+            printf ("DECODE:decode_opcode_0:Function MTHI %d\n", dest_register_addr);
             
+            break;
+
             
          
-        
-        
-       
-        
-        
-            
         default:
             *instruction = MAX_INSTRUCTION_T;
             printf ("DECODE:decode_opcode_0:Unknown instruction binary 0x%x\n", mips_instruction_binary);
@@ -239,7 +243,7 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
 
 
 /*----------------------------------------------------------------*/
-    /* FUNCTION: decode_opcode_2 (static)                             */
+/* FUNCTION: decode_opcode_2 (static)                             */
     /*----------------------------------------------------------------*/
     /* Description: Decodes the function code and returns
                     instruction type for opcode = 2
@@ -259,10 +263,34 @@ uint8_t Decode::decode_opcode_0 (uint32_t mips_instruction_binary,
 
 void Decode::decode_opcode_2 (uint32_t mips_instruction_binary, instruction_t* instruction, uint32_t* operand1)
 {
-    *instruction =J;
+    *instruction =  J;
     *operand1    =  get_target(mips_instruction_binary);
     Register_file_obj.set_PC_target(*operand1);
 }
+
+
+
+
+
+void Decode::imm_type (uint32_t mips_instruction_binary,
+                                 instruction_t* instruction,
+                                 uint32_t* operand1,
+                                 uint32_t* operand2,
+                                 uint32_t* operand3)
+{
+    
+    *instruction = LW;
+    *operand1    = get_imm(mips_instruction_binary);
+    *operand2    = get_rs_value(mips_instruction_binary);
+    *operand3    = get_rt_value(mips_instruction_binary);
+    //printf ("DECODE: Immediate instruction :Function LW ", *operand2, *operand3);
+            
+    
+
+    
+    
+}
+
 
 
 
@@ -398,7 +426,7 @@ uint16_t Decode::get_imm (uint32_t mips_instruction_binary)
 
 
 /*----------------------------------------------------------------*/
-/* FUNCTION: get_imm                                              */
+/* FUNCTION:  get_target                                          */
 /*----------------------------------------------------------------*/
 /* Description: Extract immediate operand from MIPS 
                 instruction binary

@@ -28,6 +28,8 @@ uint32_t Fetch::fetch_next_instruction(void)
 {
     uint32_t pc_value = Register_file_obj.get_PC_and_increment();
     
+    printf ("PC = %d\n", pc_value);
+    
     return Memory_obj.fetch_instruction(pc_value);
 
 } /* fetch_next_instruction */

@@ -274,8 +274,40 @@ uint32_t Execute::execute_instruction (instruction_t instruction,
             *is_writeback_valid = 1 ;
             
             break;
-
+            
+            
+            
+    
+    /*=============================================================================*/
+    /* Load Word                                                 LW rt, offset(base)
+     
+       Sign-extend 16-bit offset and add to contents of register base to form 
+       address. Sign-extend contents of addressed word and load into rt.
+    */
+    /*=============================================================================*/
+    
+        case LW:
+            
+            
+            
+                
+    /*=============================================================================*/
+    /* No Operation                                                              NOP
         
+        No operation
+     */
+    /*=============================================================================*/
+
+        case NOP:
+            intermediate_result = 0 + 0;
+            
+            // NOP, hence No memory access required
+            *is_mem_write_valid = 0 ;
+            
+             //NOP, hence no write back
+            *is_writeback_valid = 0 ;
+            
+
             
             
             

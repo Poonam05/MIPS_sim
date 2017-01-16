@@ -28,7 +28,7 @@ uint32_t* Memory::translate_pc_addr (uint32_t pc_value)
     {
         /* TODO!!!!! Cause Program counter exception */
     }
-    return ((uint32_t*)&instruction_memory[0] + pc_value);
+    return ((uint32_t*)(&instruction_memory[0] + pc_value));
 
 } /* translate_pc_addr */
 
