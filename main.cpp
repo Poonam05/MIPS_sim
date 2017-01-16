@@ -12,6 +12,7 @@
 #include "report.hpp"
 #include "assembler.hpp"
 
+
 extern class Pipeline Pipeline_obj;
 extern class Report   Report_obj;
 extern class Assembler Assembler_obj;
